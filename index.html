@@ -76,12 +76,27 @@
         $("#total").text(formatter.format(angsuran * tenor + dp))
       }
 
+
+      $("#tenor").val(localStorage.getItem('tenor'))
+      $("#bunga").val(localStorage.getItem('bunga'))
+      $("#harga").val(localStorage.getItem('harga'))
+      $("#dp").val(localStorage.getItem('dp'))
+
+      calc(localStorage.getItem('harga'),localStorage.getItem('tenor'), localStorage.getItem('bunga'), localStorage.getItem('dp'))
+
+      
       
       $("input").change(()=> {
         tenor = parseFloat($("#tenor").val())
         bunga = parseFloat($("#bunga").val())
         harga = parseFloat($("#harga").val())
         dp = parseFloat($("#dp").val())
+
+        localStorage.setItem('tenor', tenor);
+        localStorage.setItem('bunga', bunga);
+        localStorage.setItem('harga', harga);
+        localStorage.setItem('dp', dp);
+
         calc(harga, tenor, bunga, dp)
       })
 
